@@ -12,7 +12,7 @@ import { Doctors } from "@/constants";
 import {
   createAppointment,
   updateAppointment,
-} from "@/lib/actions/appointment.actions";
+} from "@/lib/actions/appointment.action";
 import { getAppointmentSchema } from "@/lib/validation";
 import { Appointment } from "@/types/appwrite.types";
 
