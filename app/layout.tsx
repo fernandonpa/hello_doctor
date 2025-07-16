@@ -1,3 +1,4 @@
+import * as Sentry from "@sentry/nextjs";
 import type { Metadata } from "next";
 import "./globals.css";
 import { Plus_Jakarta_Sans as FontSans } from "next/font/google";
@@ -11,14 +12,21 @@ const fontSans = FontSans({
   variable: "--font-sans",
 });
 
-export const metadata: Metadata = {
-  title: "CarePulse",
-  description:
-    "A healthcare patient management System designed to streamline patient registration, appointment scheduling, and medical records management for healthcare providers.",
-  icons: {
-    icon: "/assets/icons/logo-icon.svg",
-  },
-};
+//  Replace `export const metadata` with this function
+export function generateMetadata(): Metadata {
+  return {
+    title: "CarePulse",
+    description:
+      "A healthcare patient management System designed to streamline patient registration, appointment scheduling, and medical records management for healthcare providers.",
+    icons: {
+      icon: "/assets/icons/logo-icon.svg",
+    },
+    // Add Sentry trace data here
+    other: {
+      ...Sentry.getTraceData(),
+    },
+  };
+}
 
 export default function RootLayout({
   children,
